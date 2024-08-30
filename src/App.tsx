@@ -1,12 +1,12 @@
-import { FixedSizeList as List } from "react-window";
-import { EXTERNAL_URL, TOTAL_SIZE } from "./constants";
-import useWebSocket from "./hooks/useWebSocket";
 import { useEffect, useRef, useState } from "react";
+import { FixedSizeList as List } from "react-window";
+import { LOCAL_URL, TOTAL_SIZE } from "./constants";
+import useWebSocket from "./hooks/useWebSocket";
 
 const title = document.title;
 
-export default function LogViewer() {
-  const { logs, size } = useWebSocket(EXTERNAL_URL);
+export default function App() {
+  const { logs, size } = useWebSocket(LOCAL_URL);
   const listRef = useRef<List>(null);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
 
