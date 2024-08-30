@@ -16,10 +16,14 @@ export default function LogViewer() {
     }
   }, [logs, autoScrollEnabled]);
 
-  const downLoadProgress = ((size.current / TOTAL_SIZE) * 100).toFixed(2);
+  const downLoadProgress = Number(
+    ((size.current / TOTAL_SIZE) * 100).toFixed(2)
+  );
 
   useEffect(() => {
-    document.title = `${downLoadProgress}%`;
+    if (downLoadProgress > 0) {
+      document.title = `${downLoadProgress}%`;
+    }
     return () => {
       document.title = title;
     };
